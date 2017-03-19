@@ -4,7 +4,7 @@ var path = require('path');
 // process.env.NODE_ENV = 'production';
 
 module.exports = {
-	entry: './metacards.js',
+	entry: './cards.js',
 	target: 'node',
 	// because 'aws-sdk' is not compatible with webpack,
 	// we exclude all node dependencies

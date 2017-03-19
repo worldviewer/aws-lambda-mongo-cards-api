@@ -11,13 +11,13 @@ provider:
 
 functions:
   metacardsList:
-    handler: metacards.list
+    handler: cards.get
     description: Gets a complete listing of the controversy card collection
     environment:
       MLABDB: ${self:custom.secrets.MLABDB}
     events:
       - http:
-          path: metacards
+          path: cards/{id}
           method: get
           cors: true
           integration: lambda
