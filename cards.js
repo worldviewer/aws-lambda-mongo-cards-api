@@ -2,7 +2,8 @@ if (!global._babelPolyfill) {
     require('babel-polyfill');
 }
 
-let MongoClient = require('mongodb').MongoClient;
+let MongoClient = require('mongodb').MongoClient,
+    ObjectId = require('mongodb').ObjectId;
 
 const 
     CARDS = 'cards';
@@ -12,7 +13,7 @@ module.exports.get = (event, context, callback) => {
         if (connectError) { throw connectError; }
 
         db.collection(CARDS)
-            .find({"_id": event.pathParameters.id})
+            .find(new ObjectId(event.path.id))
             .toArray((queryError, docs) => {
 
             if (queryError) {

@@ -1,4 +1,4 @@
-service: controversy-cards
+service: controversy-cards-cards-endpoint
 
 plugins:
   - serverless-webpack
@@ -10,9 +10,9 @@ provider:
   stage: dev
 
 functions:
-  metacardsList:
+  cardsGet:
     handler: cards.get
-    description: Gets a complete listing of the controversy card collection
+    description: Gets a specific card from the controversy card collection
     environment:
       MLABDB: ${self:custom.secrets.MLABDB}
     events:
@@ -21,6 +21,10 @@ functions:
           method: get
           cors: true
           integration: lambda
+          request: 
+            parameters: 
+               paths: 
+                 id: true
 
 # enable auto-packing of external modules
 custom:
